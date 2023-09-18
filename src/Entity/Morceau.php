@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Morceau
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
+    #[ORM\GeneratedValue(strategy:"NONE")]
     #[ORM\Column]
     private ?int $id = null;
 
@@ -26,6 +26,13 @@ class Morceau
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+        public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getTitre(): ?string
