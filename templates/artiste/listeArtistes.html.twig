@@ -14,15 +14,15 @@
         <div class="card mb-3">
             <h3 class="card-header">{{leArtiste.nom}}</h3>
             <div class="card-body">
-                <h5 class="card-title"><a href="" class="badge badge-succes">{{nbAlbums}} {% if nbAlbums > 1 %} albums {% else %} album {% endif %}</a></h5>
+                <h5 class="card-title"><a href="" class="badge badge-success">{{nbAlbums}} {% if nbAlbums > 1 %} albums {% else %} album {% endif %}</a></h5>
             </div>
-            <img class="avatar mx-auto d-block" style="height: 200px; width: 100%; display: block;" src="{{leArtiste.image}}" alt="Artiste Image">
+            <img class="avatar mx-auto d-block" style="height: auto; width: 200px; display: block;" src="{{leArtiste.image}}" alt="Artiste Image">
             <div class="card-body">
                 <p class="card-text">{{leArtiste.description|slice(0,200)|raw}}...</p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">{% if leArtiste.type == 0 %} Artiste solo {% else %} Groupe {% endif %}</li>
-                <li class="list-group-item">{{leArtiste.site}}</li>
+                <li class="list-group-item"><a href="{{leArtiste.site}}">Site Web</a></li>
             </ul>
         </div>
     </div>
