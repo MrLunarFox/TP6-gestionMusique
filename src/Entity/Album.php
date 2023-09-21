@@ -29,11 +29,15 @@ class Album
     private ?artiste $artiste = null;
 
     #[ORM\OneToMany(mappedBy: 'album', targetEntity: Morceau::class)]
-    private Collection $marceaux;
+    private Collection $morceaux;
+
+    #[ORM\ManyToMany(targetEntity: Style::class, mappedBy: 'albums')]
+    private Collection $styles;
 
     public function __construct()
     {
-        $this->marceaux = new ArrayCollection();
+        $this->morceaux = new ArrayCollection();
+        $this->styles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -99,28 +103,55 @@ class Album
     /**
      * @return Collection<int, Morceau>
      */
-    public function getMarceaux(): Collection
+    public function getmorceaux(): Collection
     {
-        return $this->marceaux;
+        return $this->morceaux;
     }
 
-    public function addMarceaux(Morceau $marceaux): static
+    public function addmorceaux(Morceau $morceaux): static
     {
-        if (!$this->marceaux->contains($marceaux)) {
-            $this->marceaux->add($marceaux);
-            $marceaux->setAlbum($this);
+        if (!$this->morceaux->contains($morceaux)) {
+            $this->morceaux->add($morceaux);
+            $morceaux->setAlbum($this);
         }
 
         return $this;
     }
 
-    public function removeMarceaux(Morceau $marceaux): static
+    public function removemorceaux(Morceau $morceaux): static
     {
-        if ($this->marceaux->removeElement($marceaux)) {
+        if ($this->morceaux->removeElement($morceaux)) {
             // set the owning side to null (unless already changed)
-            if ($marceaux->getAlbum() === $this) {
-                $marceaux->setAlbum(null);
+            if ($morceaux->getAlbum() === $this) {
+                $morceaux->setAlbum(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Style>
+     */
+    public function getStyles(): Collection
+    {
+        return $this->styles;
+    }
+
+    public function addStyle(Style $style): static
+    {
+        if (!$this->styles->contains($style)) {
+            $this->styles->add($style);
+            $style->addAlbum($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStyle(Style $style): static
+    {
+        if ($this->styles->removeElement($style)) {
+            $style->removeAlbum($this);
         }
 
         return $this;

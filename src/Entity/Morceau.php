@@ -19,7 +19,7 @@ class Morceau
     #[ORM\Column(length: 255)]
     private ?string $duree = null;
 
-    #[ORM\ManyToOne(inversedBy: 'marceaux')]
+    #[ORM\ManyToOne(inversedBy: 'morceaux')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Album $album = null;
 
