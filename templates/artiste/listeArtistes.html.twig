@@ -12,7 +12,7 @@
 
     <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
         <div class="card mb-3">
-            <h3 class="card-header">{{leArtiste.nom}}</h3>
+            <h3 class="card-header"><a href="{{path('ficheArtiste', {'id': leArtiste.id })}}">{{leArtiste.nom}}</a></h3>
             <div class="card-body">
                 <h5 class="card-title"><a href="" class="badge badge-success">{{nbAlbums}} {% if nbAlbums > 1 %} albums {% else %} album {% endif %}</a></h5>
             </div>
@@ -26,7 +26,7 @@
             </ul>
         </div>
     </div>
-</div>
-
 {% endfor %}
+
+</div>
 {% endblock %}
