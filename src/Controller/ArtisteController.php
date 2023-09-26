@@ -7,18 +7,9 @@ use App\Repository\ArtisteRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Twig\Environment;
 
 class ArtisteController extends AbstractController
 {
-    private Environment $twig;
-
-    public function __construct(Environment $twig)
-    {
-        $this->twig = $twig;
-    }
-
     #[Route('/artistes', name: 'artistes', methods:['GET'])]
     public function listeArtistes(ArtisteRepository $repo): Response
     {
@@ -31,11 +22,11 @@ class ArtisteController extends AbstractController
 
     #[Route('/artiste/{id}', name: 'ficheArtiste', methods:['GET'])]
 
-    public function ficheArtiste(int $id, ArtisteRepository $repo): Response
+    public function ficheArtiste(Artiste $artiste): Response
     {
-        $artiste = $repo->find($id);
-        return new Response($this->twig->render('artiste/ficheArtiste.html.twig', [
+        // $artiste = $repo->find($id);
+        return $this->render('artiste/ficheArtiste.html.twig', [
             'leArtiste' => $artiste,
-        ]));
+        ]);
     }
 }

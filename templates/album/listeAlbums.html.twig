@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des albums{% endblock %}
+
+{% block body %}
+<h1 class="pt-2 text-center">Liste des Albums</h1>
+<hr>
+<div class="row pt-2">
+{% for leAlbum in lesAlbums %}
+
+    {% set nbMorceaux = leAlbum.morceaux|length %}
+
+    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+        <div class="card mb-3">
+            <h4 class="card-header"><a href="{{path('ficheAlbum', {'id': leAlbum.id })}}">{{leAlbum.nom}}</a></h4>
+            <div class="card-body">
+            <a href="">{{leAlbum.artiste}}</a>
+            </div>
+            <img class="mx-auto d-block" style="height: auto; width: 200px; display: block;" src="{{leAlbum.image}}" alt="Album Image">
+            <p align="center">{{leAlbum.date}}</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a href="" class="badge badge-success">{% for style in leAlbum.styles %} <span>{{style.nom}}</span> {% endfor %}</a></li>
+                <li class="list-group-item"><p>{{nbMorceaux}} morceaux</p></li>
+            </ul>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

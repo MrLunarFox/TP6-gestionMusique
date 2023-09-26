@@ -26,7 +26,7 @@ class Album
 
     #[ORM\ManyToOne(inversedBy: 'albums')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?artiste $artiste = null;
+    private ?Artiste $artiste = null;
 
     #[ORM\OneToMany(mappedBy: 'album', targetEntity: Morceau::class)]
     private Collection $morceaux;

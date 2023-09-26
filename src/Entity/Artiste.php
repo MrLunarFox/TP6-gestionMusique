@@ -34,6 +34,11 @@ class Artiste
     #[ORM\OneToMany(mappedBy: 'artiste', targetEntity: Album::class)]
     private Collection $albums;
 
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
     public function __construct()
     {
         $this->albums = new ArrayCollection();
