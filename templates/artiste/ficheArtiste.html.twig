@@ -44,9 +44,9 @@
   {% for leAlbum in leArtiste.albums %}
     <tr class="table-secondary">
       <td><img class="miniature" src="{{leAlbum.image}}" alt="Image de l'album"></th>
-      <td scope="row">{{leAlbum.nom}}</td>
+      <td scope="row"><a href="{{path('ficheAlbum', {'id': leAlbum.id})}}">{{leAlbum.nom}}</a></td>
       <td>{{leAlbum.date}}</td>
-      <td></td>
+      <td>{% for leStyle in leAlbum.styles %} <span class="badge" style="background-color: {{leStyle.couleur}};">{{leStyle.nom}}</span> {% endfor %}</td>
       <td>{{leAlbum.morceaux|length}}</td>
     </tr>
   {% endfor %}

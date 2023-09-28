@@ -24,7 +24,6 @@ class ArtisteController extends AbstractController
 
     public function ficheArtiste(Artiste $artiste): Response
     {
-        // $artiste = $repo->find($id);
         return $this->render('artiste/ficheArtiste.html.twig', [
             'leArtiste' => $artiste,
         ]);
