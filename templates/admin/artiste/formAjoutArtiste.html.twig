@@ -10,9 +10,24 @@
 
 
 {{form_row(formArtiste.nom)}}
+
 {{form_row(formArtiste.description)}}
 
-<input type="submit" class="btn btn-success" value="Valider">
+<div class="row">
+    <div class="col">{{form_row(formArtiste.site)}}</div>
+    <div class="col">{{form_row(formArtiste.type)}}</div>
+</div>
+
+{{form_row(formArtiste.image)}}
+
+<div class="row">
+    <div class="col"><input type="submit" class="btn btn-success btn-block" value="Valider"></div>
+    <div class="col"><a href="{{path('admin_artistes')}}" class="btn btn-warning btn-block">Annuler</a></div>
+</div>
+
+
+
+
 
 {{form_end(formArtiste)}}
 
