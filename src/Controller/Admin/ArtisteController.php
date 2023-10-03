@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 
+use App\Entity\Artiste;
+use App\Form\ArtisteType;
 use App\Repository\ArtisteRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,6 +25,18 @@ class ArtisteController extends AbstractController
 
         return $this->render('admin/artiste/listeArtistes.html.twig', [
             'lesArtistes' => $artistes
+        ]);
+    }
+
+    #[Route('/admin/artiste/ajout', name: 'admin_artiste_ajout', methods:['GET'])]
+    public function ajoutAritiste(): Response
+    {
+        $artiste = new Artiste();
+
+        $form = $this->createForm(ArtisteType::class, $artiste);
+
+        return $this->render('admin/artiste/formAjoutArtiste.html.twig', [
+            'formArtiste' => $form->createView()
         ]);
     }
 }

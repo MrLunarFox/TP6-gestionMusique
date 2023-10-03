@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'un artiste{% endblock %}
+
+{% block body %}
+
+<h1 class="pt-2 text-center">Ajout d'un artiste</h1>
+
+{{form_start(formArtiste)}}
+
+
+{{form_row(formArtiste.nom)}}
+{{form_row(formArtiste.description)}}
+
+<input type="submit" class="btn btn-success" value="Valider">
+
+{{form_end(formArtiste)}}
+
+{% endblock %}
