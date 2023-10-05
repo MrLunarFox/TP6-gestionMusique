@@ -57,4 +57,15 @@ class ArtisteController extends AbstractController
             'formArtiste' => $form->createView()
         ]);
     }
+
+    #[Route('/admin/artiste/supr/{id}', name: 'admin_artiste_supr', methods:['DELETE'])]
+    public function suprAritiste(Artiste $artiste, EntityManagerInterface $manager): Response
+    {
+        $manager->remove($artiste);
+        $manager->flush();
+
+        $this->addFlash("success", "L'artiste a bien été supprimé!");
+
+        return $this->redirectToRoute('admin_artistes');
+    }
 }
