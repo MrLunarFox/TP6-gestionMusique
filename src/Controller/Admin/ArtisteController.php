@@ -30,9 +30,15 @@ class ArtisteController extends AbstractController
     }
 
     #[Route('/admin/artiste/ajout', name: 'admin_artiste_ajout', methods:['GET', 'POST'])]
-    public function ajoutAritiste(Request $request, EntityManagerInterface $manager): Response
+    #[Route('/admin/artiste/modif/{id}', name: 'admin_artiste_modif', methods:['GET', 'POST'])]
+    public function ajoutModifAritiste(Artiste $artiste = null, Request $request, EntityManagerInterface $manager): Response
     {
-        $artiste = new Artiste();
+        if($artiste == null) {
+            $artiste = new Artiste();
+            $mode = "ajouté";
+        } else {
+            $mode = "modifié";
+        }
 
         $form = $this->createForm(ArtisteType::class, $artiste);
 
@@ -42,12 +48,12 @@ class ArtisteController extends AbstractController
             $manager->persist($artiste);
             $manager->flush();
 
-            $this->addFlash("success", "L'artiste a bien été ajouté!");
+            $this->addFlash("success", "L'artiste a bien été $mode!");
 
             return $this->redirectToRoute('admin_artistes');
         }
 
-        return $this->render('admin/artiste/formAjoutArtiste.html.twig', [
+        return $this->render('admin/artiste/formAjoutModifArtiste.html.twig', [
             'formArtiste' => $form->createView()
         ]);
     }
