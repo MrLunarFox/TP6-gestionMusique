@@ -19,7 +19,7 @@ class Artiste
     private ?int $id = null; 
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message:"Le nom est obligatoire")]
+    #[Assert\NotBlank(message:"Le nom est obligatoire!")]
     #[UniqueEntity(
         fields : ["nom"],
         message : "Le nom de l'artiste est déjà utiliser dans la base de donnée!",
