@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Style;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Style>
@@ -20,6 +21,16 @@ class StyleRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Style::class);
     }
+
+    public function listeStyleCompleteAdmin(): ?Query
+   {
+       return $this->createQueryBuilder('s')
+           ->select('s', 'a')
+           ->leftJoin('s.albums', 'a')
+           ->orderBy('s.nom', 'ASC')
+           ->getQuery()
+       ;
+   }
 
 //    /**
 //     * @return Style[] Returns an array of Style objects

@@ -30,8 +30,8 @@
 
 <div class="row">
     <div class="col"><input type="submit" class="btn btn-success btn-block" value=
-    {% if app.request.attributes.get('_route') == "admin_artiste_ajout" %} Ajouter 
-    {% else %} Modifier {% endif %}></div>
+    {% if app.request.attributes.get('_route') == "admin_artiste_ajout" %} "Ajouter"
+    {% else %} "Modifier" {% endif %}></div>
     <div class="col"><a href="{{path('admin_artistes')}}" class="btn btn-warning btn-block">Annuler</a></div>
 </div>
 
