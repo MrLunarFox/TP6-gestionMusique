@@ -20,12 +20,24 @@ class ArtisteType extends AbstractType
             ->add('nom', TextType::class, [
                 'label'=>"Nom de l'artiste",
                 'attr'=>[
-                    "placeholder"=>"Saisir le nom de l'artiste ici"
+                    "placeholder"=>"Saisir le nom de l'artiste"
                 ]
             ])
-            ->add('description', TextareaType::class)
-            ->add('site', UrlType::class)
-            ->add('image', TextType::class)
+            ->add('description', TextareaType::class, [
+                'attr'=>[
+                    "placeholder"=>"Saisir la description de l'artiste"
+                ]
+            ])
+            ->add('site', UrlType::class, [
+                'attr'=>[
+                    "placeholder"=>"Saisir le lien du site web de l'artiste"
+                ]
+            ])
+            ->add('image', TextType::class, [
+                'attr'=>[
+                    "placeholder"=>"Saisir le chemin de l'image"
+                ]
+            ])
             ->add('type', ChoiceType::class, [
                 "choices"=>[
                     "Solo"=>0,
