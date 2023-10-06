@@ -31,7 +31,7 @@ class ArtisteController extends AbstractController
 
     #[Route('/admin/artiste/ajout', name: 'admin_artiste_ajout', methods:['GET', 'POST'])]
     #[Route('/admin/artiste/modif/{id}', name: 'admin_artiste_modif', methods:['GET', 'POST'])]
-    public function ajoutModifAritiste(Artiste $artiste = null, Request $request, EntityManagerInterface $manager): Response
+    public function ajoutModifArtiste(Artiste $artiste = null, Request $request, EntityManagerInterface $manager): Response
     {
         if($artiste == null) {
             $artiste = new Artiste();
@@ -59,7 +59,7 @@ class ArtisteController extends AbstractController
     }
 
     #[Route('/admin/artiste/supr/{id}', name: 'admin_artiste_supr', methods:['GET'])]
-    public function suprAritiste(Artiste $artiste, EntityManagerInterface $manager): Response
+    public function suprArtiste(Artiste $artiste, EntityManagerInterface $manager): Response
     {
         $nbAlbums = $artiste->getAlbums()->count();
 

@@ -29,8 +29,6 @@ class Style
         minMessage : "Le nom doit comporter au minimum {{ limit }}!",
         maxMessage : "Le nom doit comporter au maximum {{ limit }}!",
     )]
-   
-    
     private ?string $nom = null;
 
     #[ORM\Column(length: 255, nullable: true)]

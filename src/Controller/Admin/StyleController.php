@@ -31,7 +31,7 @@ class StyleController extends AbstractController
 
     #[Route('/admin/style/ajout', name: 'admin_style_ajout', methods:['GET', 'POST'])]
     #[Route('/admin/style/modif/{id}', name: 'admin_style_modif', methods:['GET', 'POST'])]
-    public function ajoutModifAritiste(Style $style = null, Request $request, EntityManagerInterface $manager): Response
+    public function ajoutModifStyle(Style $style = null, Request $request, EntityManagerInterface $manager): Response
     {
         if($style == null) {
             $style = new Style();
@@ -59,7 +59,7 @@ class StyleController extends AbstractController
     }
 
     #[Route('/admin/style/supr/{id}', name: 'admin_style_supr', methods:['GET'])]
-    public function suprAritiste(Style $style, EntityManagerInterface $manager): Response
+    public function suprStyle(Style $style, EntityManagerInterface $manager): Response
     {
         $nbAlbums = $style->getAlbums()->count();
 
