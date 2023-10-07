@@ -16,17 +16,21 @@
 
 {{form_start(formAlbum,{'attr':{'novalidate':'novalidate'}})}}
 
-
-{{form_row(formAlbum.nom)}}
-
-{{form_row(formAlbum.description)}}
-
 <div class="row">
-    <div class="col">{{form_row(formAlbum.site)}}</div>
-    <div class="col">{{form_row(formAlbum.type)}}</div>
+    <div class="col">{{form_row(formAlbum.nom)}}{{form_row(formAlbum.image)}}{{form_row(formAlbum.date)}}{{form_row(formAlbum.artiste)}}</div>
+    <div class="col">{{form_row(formAlbum.styles)}}</div>
 </div>
 
-{{form_row(formAlbum.image)}}
+{# <div class="row">
+    <div class="col">{{form_row(formAlbum.nom)}}</div>
+    <div class="col">{{form_row(formAlbum.image)}}</div>
+</div>
+
+<div class="row">
+    <div class="col">{{form_row(formAlbum.date)}}</div>
+    <div class="col">{{form_row(formAlbum.artiste)}}</div>
+    <div class="col">{{form_row(formAlbum.styles)}}</div>
+</div> #}
 
 <div class="row">
     <div class="col"><input type="submit" class="btn btn-success btn-block" value=

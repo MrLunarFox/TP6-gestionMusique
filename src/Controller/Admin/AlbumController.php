@@ -45,6 +45,7 @@ class AlbumController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) { 
+            $selectedStyles = $album->getStyles();
             $manager->persist($album);
             $manager->flush();
 
@@ -61,10 +62,10 @@ class AlbumController extends AbstractController
     #[Route('/admin/album/supr/{id}', name: 'admin_album_supr', methods:['GET'])]
     public function suprAlbum(Album $album, EntityManagerInterface $manager): Response
     {
-        $nbAlbums = $album->getAlbums()->count();
+        $nbMorceaux = $morceau->getMorceaux()->count();
 
-        if($nbAlbums > 0) {
-            $this->addFlash("danger", "Vous ne pouvez pas supprimer cet album car $nbAlbums album(s) y sont associés!");
+        if($nbMorceaux > 0) {
+            $this->addFlash("danger", "Vous ne pouvez pas supprimer cet album car $nbMorceaux morceau(x) y sont associés!");
         } else {
             $manager->remove($album);
             $manager->flush();
