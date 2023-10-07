@@ -11,6 +11,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 #[ORM\Entity(repositoryClass: StyleRepository::class)]
+#[UniqueEntity(fields : ["nom"], message : "Le nom du style est déjà utiliser dans la base de donnée!")]
+#[UniqueEntity(fields : ["couleur"], message : "La couleur du style est déjà utiliser dans la base de donnée!")]
 class Style
 {
     #[ORM\Id]
@@ -20,10 +22,6 @@ class Style
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message:"Le nom est obligatoire!")]
-    #[UniqueEntity(
-        fields : ["nom"],
-        message : "Le nom du style est déjà utiliser dans la base de donnée!",
-    )]
     #[Assert\Length(
         min : 3,
         max : 50,
@@ -34,10 +32,6 @@ class Style
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Assert\NotBlank(message:"La couleur est obligatoire")]
-    #[UniqueEntity(
-        fields : ["couleur"],
-        message : "La couleur du style est déjà utiliser dans la base de donnée!",
-    )]
     private ?string $couleur = null;
 
     #[ORM\ManyToMany(targetEntity: Album::class, inversedBy: 'styles')]

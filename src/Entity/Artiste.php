@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ArtisteRepository::class)]
+#[UniqueEntity(fields : ["nom"], message : "Le nom de l'artiste est déjà utiliser dans la base de donnée!")]
 class Artiste
 {
     #[ORM\Id]
@@ -20,10 +21,6 @@ class Artiste
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message:"Le nom est obligatoire!")]
-    #[UniqueEntity(
-        fields : ["nom"],
-        message : "Le nom de l'artiste est déjà utiliser dans la base de donnée!",
-    )]
     private ?string $nom = null;
 
     #[ORM\Column(type: Types::TEXT)]
