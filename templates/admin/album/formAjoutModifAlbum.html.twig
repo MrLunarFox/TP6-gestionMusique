@@ -6,6 +6,8 @@
     d'un album
 {% endblock %}
 
+{% block stylesheets %} <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> {% endblock %}
+
 {% block body %}
 
 <h1 class="pt-2 text-center">
@@ -39,10 +41,9 @@
     <div class="col"><a href="{{path('admin_albums')}}" class="btn btn-warning btn-block">Annuler</a></div>
 </div>
 
-
-
-
-
 {{form_end(formAlbum)}}
 
 {% endblock %}
+
+{% block javascripts %} <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> <script>$(document).ready(function() {$('.selectStyles').select2();
+});</script> {% endblock %}

@@ -52,7 +52,10 @@ class AlbumType extends AbstractType
                 'required'=>false,
                 'multiple' => true, // Permet la sélection de plusieurs styles
                 'expanded' => true,
-                'by_reference'=>false
+                'by_reference'=>false,
+                'attr'=>[
+                    'class'=>"selectStyles",
+                ]
             ])
             //->add('Valider', SubmitType::class)
         ;
