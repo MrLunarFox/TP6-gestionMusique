@@ -37,6 +37,17 @@ class AlbumRepository extends ServiceEntityRepository
        ;
    }
 
+   public function listeAlbumCompleteAdmin(): ?Query
+   {
+       return $this->createQueryBuilder('al')
+           ->select('a', 's', 'm')
+           ->leftJoin('a.styles', 's')
+           ->leftJoin('a.morceaux', 'm')
+           ->orderBy('a.nom', 'ASC')
+           ->getQuery()
+       ;
+   }
+
 //    public function findOneBySomeField($value): ?Album
 //    {
 //        return $this->createQueryBuilder('a')
