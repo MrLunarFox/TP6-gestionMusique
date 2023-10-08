@@ -6,6 +6,7 @@ use App\Entity\Album;
 use App\Entity\Style;
 use App\Entity\Artiste;
 use App\Repository\StyleRepository;
+use App\Repository\ArtisteRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -43,20 +44,25 @@ class AlbumType extends AbstractType
             ])
             ->add('artiste', EntityType::class, [
                 'class' => Artiste::class,
+                'query_builder'=>function(ArtisteRepository $repo) {
+                    return $repo->listeArtisteSimple();
+                },
                 'choice_label'=>'nom',
                 'label' => "Nom de l'artiste",
                 'required'=>false
             ])
             ->add('styles', EntityType::class, [
                 'class' => Style::class,
+                'query_builder'=>function(StyleRepository $repo) {
+                    return $repo->listeStyleSimple();
+                },
                 'choice_label'=>'nom',
                 'label' => "Style(s)",
                 'required'=>false,
                 'multiple' => true,
-                'expanded' => true,
                 'by_reference'=>false,
                 'attr'=>[
-                    'class'=>"selectStyles",
+                    'class'=>"selectStyles"
                 ]
             ])
             //->add('Valider', SubmitType::class)

@@ -34,7 +34,7 @@ class Style
     #[Assert\NotBlank(message:"La couleur est obligatoire")]
     private ?string $couleur = null;
 
-    #[ORM\ManyToMany(targetEntity: Album::class, mappedBy: 'styles')]
+    #[ORM\ManyToMany(targetEntity: Album::class, inversedBy: 'styles')]
     private Collection $albums;
 
     public function __toString()
