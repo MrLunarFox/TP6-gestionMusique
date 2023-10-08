@@ -47,7 +47,7 @@ class Album
     #[ORM\OneToMany(mappedBy: 'album', targetEntity: Morceau::class)]
     private Collection $morceaux;
 
-    #[ORM\ManyToMany(targetEntity: Style::class, mappedBy: 'albums')]
+    #[ORM\ManyToMany(targetEntity: Style::class, inversedBy: 'albums')]
     #[Assert\Count(
         min : 1,
         minMessage : "Au moins un style doit être sélectionné!",
