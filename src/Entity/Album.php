@@ -52,7 +52,7 @@ class Album
         min : 1,
         minMessage : "Au moins un style doit être sélectionné!",
     )]
-    private Collection $styles;
+    private Collection $styles; 
 
     public function __construct()
     {
